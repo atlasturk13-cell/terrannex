@@ -1,0 +1,219 @@
+{
+  "dataset": {
+    "commit": "f1890d9f152c896d250a77557a5751a93d494776",
+    "dataset": "Natural Earth 1:50m Admin 0 Countries, GeoJSON",
+    "license": "Public domain",
+    "license_url": "https://github.com/nvkelso/natural-earth-vector/blob/f1890d9f152c896d250a77557a5751a93d494776/LICENSE.md",
+    "release": "v5.1.2",
+    "source_sha256": "3e458fc036ad0a66411f2c1e6cac49c5d7bfb81cb1123bc513b22511a2b7fdeb",
+    "terms": "Natural Earth raster and vector map data is public domain.",
+    "terms_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+    "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/f1890d9f152c896d250a77557a5751a93d494776/geojson/ne_50m_admin_0_countries.geojson"
+  },
+  "generator": {
+    "edge_water_margin_pixels": 24,
+    "pillow": "10.4.0",
+    "regional_script": "map-generator/scripts/generate_natural_earth_regions.py",
+    "terrain_generator": "map-generator (pinned repository source)"
+  },
+  "maps": {
+    "africamiddleeast": {
+      "bounds_wgs84": [-27.0, -40.0, 66.0, 40.0],
+      "description": "Africa and Middle East.",
+      "display_name": "Africa–Middle East",
+      "id": "AfricaMiddleEast",
+      "modifications": [
+        "Clipped to -27,-40,66,40.",
+        "Rasterized to 1500x1280 with a water edge.",
+        "Removed small terrain with the pinned local Go generator.",
+        "Carved 2 twelve-pixel waterway corridors."
+      ],
+      "output_hashes": {
+        "manifest.json": "b082eb3c7bb32c8b9640b396b8f08463b8d0aacffea70a47a95b2f669f1d2ea0",
+        "map.bin": "0abe0c135fcb945d9ffeb1be07315b46f5c34153afe7e3efd98758f035280eca",
+        "map16x.bin": "4e77b88da6425888ce29afbb2976dda0ace4a10888a7f099f5a9f6ffc8492501",
+        "map4x.bin": "0c86c2399b37aedcd7c385f4db03dc323a566d89cea26bede38241862df351c8",
+        "thumbnail.webp": "330b67d6ca634f9f108db64a196432e66f880723e45698d0e58e79f900f449e9"
+      },
+      "source_hashes": {
+        "image.png": "50e7e57e95e5232d03a31dec1391e7af4cf5a088c596b45f12771b12213174cd",
+        "info.json": "21e105b87de73543ad62167606c4f3cd1ecba43bc9d2e7b913137731398e4f04"
+      },
+      "terrain": {
+        "map": {
+          "height": 1280,
+          "num_land_tiles": 776818,
+          "width": 1500
+        },
+        "map16x": {
+          "height": 320,
+          "num_land_tiles": 47616,
+          "width": 375
+        },
+        "map4x": {
+          "height": 640,
+          "num_land_tiles": 192792,
+          "width": 750
+        }
+      }
+    },
+    "asiapacific": {
+      "bounds_wgs84": [54.0, -50.0, 180.0, 76.0],
+      "description": "Asia and Pacific islands.",
+      "display_name": "Asia–Pacific",
+      "id": "AsiaPacific",
+      "modifications": [
+        "Clipped to 54,-50,180,76.",
+        "Rasterized to 1520x1520 with a water edge.",
+        "Removed small terrain with the pinned local Go generator.",
+        "Carved 1 twelve-pixel waterway corridors."
+      ],
+      "output_hashes": {
+        "manifest.json": "90bfa066a5edcad2f734f982a78ea4690b7e2e3f3da9cbf69ad798314ed839cf",
+        "map.bin": "a6b413713471d3a9a1db8512967da3417a28d4f7e832181e50e3228822abcd5e",
+        "map16x.bin": "417400d6f0914c8ec5c4199019e3d57db12b8922310d2e7cdb740aca4b5857be",
+        "map4x.bin": "dd185ddca3393849dc1cf1eb0c5b7d1b18df31c6f7540cadb9d7742b06c9f67e",
+        "thumbnail.webp": "127168edff087270f6ad96297ef920ec91f2753dc5922e3159eb1ffd9a7952e7"
+      },
+      "source_hashes": {
+        "image.png": "97862d0e90db67adcf85997a168b5de339f75bb00ea6e73d8e62c7e5df162dfd",
+        "info.json": "154282749ffbb2ba5f8c8d3fb076d27619577db419393523e0271500e427a94e"
+      },
+      "terrain": {
+        "map": {
+          "height": 1520,
+          "num_land_tiles": 786370,
+          "width": 1520
+        },
+        "map16x": {
+          "height": 380,
+          "num_land_tiles": 47059,
+          "width": 380
+        },
+        "map4x": {
+          "height": 760,
+          "num_land_tiles": 193075,
+          "width": 760
+        }
+      }
+    },
+    "europemediterranean": {
+      "bounds_wgs84": [-16.0, 28.0, 48.0, 72.0],
+      "description": "Europe and Mediterranean coasts.",
+      "display_name": "Europe–Mediterranean",
+      "id": "EuropeMediterranean",
+      "modifications": [
+        "Clipped to -16,28,48,72.",
+        "Rasterized to 1600x1100 with a water edge.",
+        "Removed small terrain with the pinned local Go generator.",
+        "Carved 4 twelve-pixel waterway corridors."
+      ],
+      "output_hashes": {
+        "manifest.json": "f18d3bea65b56f60f3c16ad5645502ef8cc231accded23956fba9361f39a77f5",
+        "map.bin": "80831440d93244a753334775afd1f82b3f3c9e6acc8d24ddaf9a47602d9d548f",
+        "map16x.bin": "f0b078cb94017d483542b751d1be048039b9b3e9793c106674ead17034a50755",
+        "map4x.bin": "dcd1788a17b1b77791c2003f5ae22d7b59d6b7c195714731d4747d18e52d6ca7",
+        "thumbnail.webp": "f31c35e915ced48912b2fdebe1ed224f5100142595ded0e355aa8f79fc1860cf"
+      },
+      "source_hashes": {
+        "image.png": "31a7dc79175a14fb69c7b78d2ca4efeb886e5d3d096fb5597f0b76540606c082",
+        "info.json": "3e7b03cbebd0380008ee9e2fc3a385aa61b4babbdc6e2b39d7ce0634c7e6422b"
+      },
+      "terrain": {
+        "map": {
+          "height": 1100,
+          "num_land_tiles": 944213,
+          "width": 1600
+        },
+        "map16x": {
+          "height": 275,
+          "num_land_tiles": 56938,
+          "width": 400
+        },
+        "map4x": {
+          "height": 550,
+          "num_land_tiles": 232815,
+          "width": 800
+        }
+      }
+    },
+    "naturalearthsouthamerica": {
+      "bounds_wgs84": [-94.0, -58.0, -30.0, 16.0],
+      "description": "South American coasts and rivers.",
+      "display_name": "South America",
+      "id": "NaturalEarthSouthAmerica",
+      "modifications": [
+        "Clipped to -94,-58,-30,16.",
+        "Rasterized to 1200x1400 with a water edge.",
+        "Removed small terrain with the pinned local Go generator."
+      ],
+      "output_hashes": {
+        "manifest.json": "ef15a18fb409edba4c11a8f3f823fbba3ac88aa779b7536e4a9bb5574327c54d",
+        "map.bin": "4567aef95a20660075c1f973fc71277d66f4be5b1ad09bce48306d17f8d40304",
+        "map16x.bin": "6e2d2c33c6ed4f422846a0630334de1236bcc109c24d5f3770c6e657673eb8eb",
+        "map4x.bin": "905310fa8fc66b5da866bb15485ab3210a861f176a24a5c3e141f0d3bd6e1810",
+        "thumbnail.webp": "a1dc2f6585b12c13c2549fdb4f9cfbf22698196fc6729dc095fc39d15c0b5d69"
+      },
+      "source_hashes": {
+        "image.png": "43fe69756674ae88d0847b945a5ce95789b3881589c4c4b5599b2b0f08241804",
+        "info.json": "27d1f8b9c1c884f21b38faa7767bd6daf79c53d34c95eab3f08641963b0344a3"
+      },
+      "terrain": {
+        "map": {
+          "height": 1400,
+          "num_land_tiles": 521851,
+          "width": 1200
+        },
+        "map16x": {
+          "height": 350,
+          "num_land_tiles": 31724,
+          "width": 300
+        },
+        "map4x": {
+          "height": 700,
+          "num_land_tiles": 129125,
+          "width": 600
+        }
+      }
+    },
+    "northamericacaribbean": {
+      "bounds_wgs84": [-172.0, 4.0, -48.0, 79.0],
+      "description": "North America and Caribbean.",
+      "display_name": "North America–Caribbean",
+      "id": "NorthAmericaCaribbean",
+      "modifications": [
+        "Clipped to -172,4,-48,79.",
+        "Rasterized to 1800x1100 with a water edge.",
+        "Removed small terrain with the pinned local Go generator."
+      ],
+      "output_hashes": {
+        "manifest.json": "6d178f16879a18647e37414789e71f09e14727a7ce512eb857e79dbf464ba247",
+        "map.bin": "93bc3cf616342f975cc885d352c912d87adebfe76028af6aaeef9da84db8e393",
+        "map16x.bin": "45a7325d049c818f3b251350aeb9c5c69b6921b4e916e5fd5ed30dabc82f1c2d",
+        "map4x.bin": "7ee981de7d2ea7b72718503d531f10db85ea5fd4e2e304073eb42c599c91bf9b",
+        "thumbnail.webp": "992732f59231387f379e7e1510886eae7881ea8f188cf2af72e4b27f1c93cb72"
+      },
+      "source_hashes": {
+        "image.png": "ba97e938d1cf5ac0e6967204b7e61eb107aa4db1bb80025a46170bb5152d7aa5",
+        "info.json": "9ab1f23536e1f1eaa118879ad2316039ed2caebd8f1c85fe8ce1bbc2a7cbdbd9"
+      },
+      "terrain": {
+        "map": {
+          "height": 1100,
+          "num_land_tiles": 651770,
+          "width": 1800
+        },
+        "map16x": {
+          "height": 275,
+          "num_land_tiles": 38124,
+          "width": 450
+        },
+        "map4x": {
+          "height": 550,
+          "num_land_tiles": 158952,
+          "width": 900
+        }
+      }
+    }
+  }
+}

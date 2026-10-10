@@ -1,0 +1,105 @@
+{
+  "categories": ["new", "continental", "asia", "oceania"],
+  "description": "Asia and Pacific islands.",
+  "display_name": "Asia–Pacific",
+  "id": "AsiaPacific",
+  "modifications": [
+    "Clipped to 54,-50,180,76.",
+    "Rasterized to 1520x1520 with a water edge.",
+    "Removed small terrain with the pinned local Go generator.",
+    "Carved 1 twelve-pixel waterway corridors."
+  ],
+  "multiplayer_frequency": 0,
+  "name": "Asia–Pacific",
+  "nations": [
+    {
+      "coordinates": [759, 216],
+      "name": "Russia"
+    },
+    {
+      "coordinates": [208, 348],
+      "name": "Kazakhstan"
+    },
+    {
+      "coordinates": [609, 474],
+      "name": "China"
+    },
+    {
+      "coordinates": [595, 364],
+      "name": "Mongolia"
+    },
+    {
+      "coordinates": [869, 449],
+      "name": "North Korea"
+    },
+    {
+      "coordinates": [888, 484],
+      "name": "South Korea"
+    },
+    {
+      "coordinates": [1025, 479],
+      "name": "Japan"
+    },
+    {
+      "coordinates": [365, 656],
+      "name": "India"
+    },
+    {
+      "coordinates": [203, 554],
+      "name": "Pakistan"
+    },
+    {
+      "coordinates": [444, 628],
+      "name": "Bangladesh"
+    },
+    {
+      "coordinates": [518, 657],
+      "name": "Myanmar"
+    },
+    {
+      "coordinates": [578, 717],
+      "name": "Thailand"
+    },
+    {
+      "coordinates": [623, 659],
+      "name": "Vietnam"
+    },
+    {
+      "coordinates": [585, 862],
+      "name": "Malaysia"
+    },
+    {
+      "coordinates": [755, 911],
+      "name": "Indonesia"
+    },
+    {
+      "coordinates": [810, 709],
+      "name": "Philippines"
+    },
+    {
+      "coordinates": [1074, 984],
+      "name": "Papua New Guinea"
+    },
+    {
+      "coordinates": [953, 1233],
+      "name": "Australia"
+    },
+    {
+      "coordinates": [1378, 1433],
+      "name": "New Zealand"
+    }
+  ],
+  "source": {
+    "commit": "f1890d9f152c896d250a77557a5751a93d494776",
+    "dataset": "Natural Earth 1:50m Admin 0 Countries, GeoJSON",
+    "license": "Public domain",
+    "license_url": "https://github.com/nvkelso/natural-earth-vector/blob/f1890d9f152c896d250a77557a5751a93d494776/LICENSE.md",
+    "release": "v5.1.2",
+    "source_sha256": "3e458fc036ad0a66411f2c1e6cac49c5d7bfb81cb1123bc513b22511a2b7fdeb",
+    "terms": "Natural Earth raster and vector map data is public domain.",
+    "terms_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+    "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/f1890d9f152c896d250a77557a5751a93d494776/geojson/ne_50m_admin_0_countries.geojson"
+  },
+  "themes": ["asia", "oceania"],
+  "translation_key": "map.asiapacific"
+}

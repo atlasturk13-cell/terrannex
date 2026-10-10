@@ -1,0 +1,10 @@
+# Frozen evaluation and historical evidence records are immutable inputs.
+EVALS.md
+TARGET_SPEC.md
+VARIETY_REALITY_GAUNTLET.md
+evidence/gauntlet/combat-round-1/RESULTS.md
+evidence/gauntlet/depth-area-e/BEFORE.md
+evidence/gauntlet/economy-round-1/RESULTS.md
+
+# Pinned upstream source data; formatting would invalidate provenance hashes.
+map-generator/sources/natural-earth-v5.1.2/ne_50m_admin_0_countries.geojson

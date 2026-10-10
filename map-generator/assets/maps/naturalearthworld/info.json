@@ -1,0 +1,118 @@
+{
+  "categories": ["world"],
+  "display_name": "World (Natural Earth)",
+  "id": "NaturalEarthWorld",
+  "multiplayer_frequency": 0,
+  "name": "Natural Earth World",
+  "nations": [
+    {
+      "coordinates": [592, 260],
+      "name": "United States of America"
+    },
+    {
+      "coordinates": [462, 153],
+      "name": "Canada"
+    },
+    {
+      "coordinates": [430, 368],
+      "name": "Mexico"
+    },
+    {
+      "coordinates": [697, 578],
+      "name": "Brazil"
+    },
+    {
+      "coordinates": [644, 711],
+      "name": "Argentina"
+    },
+    {
+      "coordinates": [980, 191],
+      "name": "United Kingdom"
+    },
+    {
+      "coordinates": [1006, 252],
+      "name": "France"
+    },
+    {
+      "coordinates": [974, 285],
+      "name": "Spain"
+    },
+    {
+      "coordinates": [1057, 215],
+      "name": "Germany"
+    },
+    {
+      "coordinates": [1195, 283],
+      "name": "Turkey"
+    },
+    {
+      "coordinates": [1166, 178],
+      "name": "Russia"
+    },
+    {
+      "coordinates": [1170, 350],
+      "name": "Egypt"
+    },
+    {
+      "coordinates": [1047, 449],
+      "name": "Nigeria"
+    },
+    {
+      "coordinates": [1224, 449],
+      "name": "Ethiopia"
+    },
+    {
+      "coordinates": [1210, 497],
+      "name": "Kenya"
+    },
+    {
+      "coordinates": [1139, 676],
+      "name": "South Africa"
+    },
+    {
+      "coordinates": [1250, 365],
+      "name": "Saudi Arabia"
+    },
+    {
+      "coordinates": [1297, 319],
+      "name": "Iran"
+    },
+    {
+      "coordinates": [1371, 233],
+      "name": "Kazakhstan"
+    },
+    {
+      "coordinates": [1385, 334],
+      "name": "Pakistan"
+    },
+    {
+      "coordinates": [1459, 382],
+      "name": "India"
+    },
+    {
+      "coordinates": [1578, 300],
+      "name": "China"
+    },
+    {
+      "coordinates": [1760, 302],
+      "name": "Japan"
+    },
+    {
+      "coordinates": [1560, 413],
+      "name": "Thailand"
+    },
+    {
+      "coordinates": [1601, 421],
+      "name": "Vietnam"
+    },
+    {
+      "coordinates": [1636, 505],
+      "name": "Indonesia"
+    },
+    {
+      "coordinates": [1755, 672],
+      "name": "Australia"
+    }
+  ],
+  "translation_key": "map.naturalearthworld"
+}

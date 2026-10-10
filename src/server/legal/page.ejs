@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%= title %> — <%= brand %></title>
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" type="image/svg+xml" href="<%= faviconHref %>" />
+    <style>
+      :root { color-scheme: dark; }
+      body { margin: 0; background: #0b1620; color: #dbe5ea; font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
+      main { max-width: 760px; margin: 0 auto; padding: 48px 24px 64px; }
+      a { color: #62d9ff; }
+      h1 { font-size: 28px; margin: 0 0 4px; }
+      h2 { font-size: 18px; margin: 32px 0 8px; color: #fff; }
+      .eyebrow { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: #62d9ff; font-weight: 700; }
+      .meta { color: rgba(255,255,255,.55); font-size: 13px; margin-bottom: 24px; }
+      .card { border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.04); border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+      footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.1); font-size: 13px; color: rgba(255,255,255,.5); display: flex; flex-wrap: wrap; gap: 12px 20px; }
+      ul { padding-left: 20px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="eyebrow"><%= brand %></div>
+      <h1><%= title %></h1>
+      <p class="meta">Operated by <%= operatorName %> · Contact: <%= operatorContact %> · Document version <%= version %></p>
+      <%- body %>
+      <footer>
+        <a href="/">← Back to the game</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="<%= sourceUrl %>" rel="noopener noreferrer">Source code (AGPL-3.0)</a>
+        <a href="/.well-known/security.txt">security.txt</a>
+      </footer>
+    </main>
+  </body>
+</html>

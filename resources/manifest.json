@@ -1,0 +1,19 @@
+{
+  "icons": [
+    {
+      "purpose": "any maskable",
+      "sizes": "any",
+      "src": "/local/territory-lab-mark.svg",
+      "type": "image/svg+xml"
+    }
+  ],
+  "orientation": "any",
+  "display_override": ["fullscreen", "minimal-ui"],
+  "display": "standalone",
+  "dir": "auto",
+  "lang": "en",
+  "name": "Terrannex",
+  "short_name": "Terrannex",
+  "start_url": "/",
+  "id": "/"
+}

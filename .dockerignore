@@ -1,0 +1,49 @@
+node_modules
+Dockerfile*
+docker-compose*
+.dockerignore
+.git
+.gitignore
+README.md
+LICENSE
+.vscode
+Makefile
+helm-charts
+.env*
+.editorconfig
+.idea
+coverage*
+tests/
+
+# The local production profile admits only the two audited maps and the exact
+# language/image families selected by PublicAssetManifest. Keeping excluded
+# bulk assets out of the build context makes the container boundary fail closed
+# as well as the generated static artifact.
+resources/maps/*
+!resources/maps/naturalearthworld/
+!resources/maps/naturalearthworld/**
+!resources/maps/thebox/
+!resources/maps/thebox/**
+!resources/maps/europemediterranean/
+!resources/maps/europemediterranean/**
+!resources/maps/northamericacaribbean/
+!resources/maps/northamericacaribbean/**
+!resources/maps/naturalearthsouthamerica/
+!resources/maps/naturalearthsouthamerica/**
+!resources/maps/africamiddleeast/
+!resources/maps/africamiddleeast/**
+!resources/maps/asiapacific/
+!resources/maps/asiapacific/**
+resources/flags/*
+!resources/flags/??.svg
+resources/sounds/
+resources/icons/
+resources/images/*
+!resources/images/*.svg
+!resources/images/aircraft/
+!resources/images/aircraft/**
+!resources/images/LocalSetupSatelliteBackground.png
+resources/lang/*
+!resources/lang/en.json
+!resources/lang/tr.json
+!resources/lang/metadata.json

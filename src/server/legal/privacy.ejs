@@ -1,0 +1,53 @@
+<p>This notice describes what <%= brand %> at <a href="<%= publicOrigin %>"><%= publicOrigin %></a> processes when you play. The service is operated by <strong><%= operatorName %></strong> (the data controller). You can reach the operator at <strong><%= operatorContact %></strong> for any question or request about your data.</p>
+
+<h2>What the game stores in your browser</h2>
+<ul>
+  <li>A random player identifier and your chosen display name, kept in your browser's local storage so you can rejoin a match after a reload. Neither is tied to an account; there are no accounts.</li>
+  <li>Your settings (controls, graphics, map labels) and, for single-player matches, the last match setup, kept in local storage or session storage.</li>
+<% if (adsense) { %>
+  <li>No analytics scripts are used. Advertising is provided by Google AdSense, described below; the game's own code sets no tracking cookies.</li>
+<% } else { %>
+  <li>No tracking cookies, no advertising identifiers, no analytics scripts and no third-party embeds are used.</li>
+<% } %>
+</ul>
+
+<% if (accounts) { %>
+<h2>Optional player account</h2>
+<ul>
+  <li>You can play as a guest. If you create an account, the server stores your display name, your email address<% if (googleSignIn) { %> (or, with "Sign in with Google", the Google account identifier and the verified email Google reports)<% } %>, a salted hash of your password (never the password itself), the date the account was created, and your match record: experience points, level, matches played and wins, with the game id of each awarded match.</li>
+  <li>This is used to sign you in, to show your level, and to give you the small head start your level earns in the next match. Nothing else is derived from it and it is not sold or shared.</li>
+  <li>A signed-in session is a signed token kept in your browser's local storage for up to 30 days; signing out removes it. To delete the account and its record, contact <strong><%= operatorContact %></strong>.</li>
+<% if (googleSignIn) { %>
+  <li>"Sign in with Google" loads Google's sign-in button from accounts.google.com only when you open the sign-in dialog; Google processes that request under its own <a href="https://policies.google.com/privacy" rel="noopener noreferrer">privacy policy</a>.</li>
+<% } %>
+</ul>
+<% } %>
+
+<h2>What the server processes</h2>
+<ul>
+  <li>Game traffic: the display name, the player identifier and the moves you make are relayed to every player of the same match over a WebSocket connection so the match can be played. Match state is kept in memory for the duration of the match.</li>
+  <li>Connection metadata: the server sees your IP address to deliver the game and to apply per-IP rate limits. Server logs record IP addresses in anonymised (truncated) form together with timestamps and technical errors. The operator decides how long logs are kept.</li>
+  <li>Transport security: connections are encrypted with TLS when the site is served over https.</li>
+</ul>
+
+<% if (adsense) { %>
+<h2>Advertising (Google AdSense)</h2>
+<ul>
+  <li>Menu pages show ads served by Google AdSense (Google Ireland Limited in the EEA, UK and Switzerland; Google LLC elsewhere). Ads are never shown during a match.</li>
+  <li>Google and its partners use cookies or similar technologies to serve ads, to measure them and to prevent fraud, and, where you allow it, to show ads based on your earlier visits to this and other websites. Google's use of advertising cookies enables it and its partners to serve ads based on those visits. See <a href="https://policies.google.com/technologies/partner-sites" rel="noopener noreferrer">how Google uses information from sites that use its services</a>.</li>
+  <li>Visitors from the EEA, the UK and Switzerland are asked for consent through Google's consent message before personalised ads or advertising cookies are used, and can change that choice later from the privacy link the message leaves on the page. Everyone can turn off personalised advertising in <a href="https://myadcenter.google.com/" rel="noopener noreferrer">My Ad Center</a> or opt out of third-party vendors at <a href="https://www.aboutads.info/choices/" rel="noopener noreferrer">aboutads.info</a>.</li>
+  <li>Google processes your IP address and device information for these purposes as an independent controller under its own <a href="https://policies.google.com/privacy" rel="noopener noreferrer">privacy policy</a>.</li>
+</ul>
+
+<h2>What is not collected</h2>
+<p>No payment data or precise location is collected by the game itself<% if (!accounts) { %>, and no e-mail address or password either<% } %>. The operator does not sell data. Apart from the advertising described above, data is not shared with third parties; the operator may host the service on infrastructure of a hosting provider, which processes network traffic on the operator's behalf.</p>
+<% } else { %>
+<h2>What is not collected</h2>
+<p>No <% if (!accounts) { %>e-mail address, password, <% } %>payment data, precise location, device fingerprint or advertising profile. The game does not sell or share data with third parties. The operator may host the service on infrastructure of a hosting provider, which processes network traffic on the operator's behalf.</p>
+<% } %>
+
+<h2>Your rights</h2>
+<p>Depending on where you live (for example under the GDPR or the Turkish KVKK) you may have the right to access, correct or erase personal data, to object to processing and to lodge a complaint with a supervisory authority. Because the game holds no account data, the practical steps are: clear the site data in your browser to remove the identifier and settings, and contact <strong><%= operatorContact %></strong> about anything held in server logs.</p>
+
+<h2>Changes</h2>
+<p>This notice is generated from a template that ships with the game's source code (version <%= version %>). The operator publishes updates on this page.</p>

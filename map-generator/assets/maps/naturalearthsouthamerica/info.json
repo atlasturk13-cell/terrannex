@@ -1,0 +1,76 @@
+{
+  "categories": ["new", "continental", "south_america"],
+  "description": "South American coasts and rivers.",
+  "display_name": "South America",
+  "id": "NaturalEarthSouthAmerica",
+  "modifications": [
+    "Clipped to -94,-58,-30,16.",
+    "Rasterized to 1200x1400 with a water edge.",
+    "Removed small terrain with the pinned local Go generator."
+  ],
+  "multiplayer_frequency": 0,
+  "name": "Natural Earth South America",
+  "nations": [
+    {
+      "coordinates": [399, 234],
+      "name": "Colombia"
+    },
+    {
+      "coordinates": [518, 202],
+      "name": "Venezuela"
+    },
+    {
+      "coordinates": [651, 229],
+      "name": "Guyana"
+    },
+    {
+      "coordinates": [706, 239],
+      "name": "Suriname"
+    },
+    {
+      "coordinates": [309, 347],
+      "name": "Ecuador"
+    },
+    {
+      "coordinates": [367, 488],
+      "name": "Peru"
+    },
+    {
+      "coordinates": [738, 571],
+      "name": "Brazil"
+    },
+    {
+      "coordinates": [572, 611],
+      "name": "Bolivia"
+    },
+    {
+      "coordinates": [664, 743],
+      "name": "Paraguay"
+    },
+    {
+      "coordinates": [442, 921],
+      "name": "Chile"
+    },
+    {
+      "coordinates": [551, 992],
+      "name": "Argentina"
+    },
+    {
+      "coordinates": [710, 910],
+      "name": "Uruguay"
+    }
+  ],
+  "source": {
+    "commit": "f1890d9f152c896d250a77557a5751a93d494776",
+    "dataset": "Natural Earth 1:50m Admin 0 Countries, GeoJSON",
+    "license": "Public domain",
+    "license_url": "https://github.com/nvkelso/natural-earth-vector/blob/f1890d9f152c896d250a77557a5751a93d494776/LICENSE.md",
+    "release": "v5.1.2",
+    "source_sha256": "3e458fc036ad0a66411f2c1e6cac49c5d7bfb81cb1123bc513b22511a2b7fdeb",
+    "terms": "Natural Earth raster and vector map data is public domain.",
+    "terms_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+    "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/f1890d9f152c896d250a77557a5751a93d494776/geojson/ne_50m_admin_0_countries.geojson"
+  },
+  "themes": ["south_america"],
+  "translation_key": "map.naturalearthsouthamerica"
+}

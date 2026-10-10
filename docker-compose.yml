@@ -1,0 +1,71 @@
+# Self-hosted deployment: the audited local profile behind a TLS terminator.
+#
+#   client ──HTTPS──▶ caddy ──HTTP──▶ nginx (in the game image) ──▶ Express
+#
+# Copy deploy/.env.example to .env, set SITE_ADDRESS to your domain (DNS must
+# already point at this host), then `docker compose up -d --build`.
+# Read DEPLOY.md first: the code is ready, but licensing and legal gates in
+# BLOCKERS.md are the operator's decision, not this file's.
+services:
+  game:
+    build:
+      context: .
+      args:
+        GIT_COMMIT: ${GIT_COMMIT:-local}
+    image: front-wars-local:latest
+    restart: unless-stopped
+    environment:
+      LOCAL_ONLY: "true"
+      GAME_ENV: dev
+      DOMAIN: localhost
+      SUBDOMAIN: ${SUBDOMAIN:-prod}
+      NUM_WORKERS: ${NUM_WORKERS:-2}
+      TURNSTILE_SITE_KEY: 1x00000000000000000000AA
+      # One trusted hop per reverse proxy: caddy + the in-image nginx.
+      TRUST_PROXY_HOPS: "2"
+      ENABLE_HSTS: "true"
+      WS_ALLOWED_ORIGINS: ${WS_ALLOWED_ORIGINS:-same-origin}
+      GIT_COMMIT: ${GIT_COMMIT:-local}
+      # Hosted profile (see DEPLOY.md): the public origin switches on the
+      # canonical/social metadata, sitemap, security.txt and legal pages and
+      # requires the operator values below.
+      PUBLIC_ORIGIN: ${PUBLIC_ORIGIN:-}
+      SOURCE_URL: ${SOURCE_URL:-}
+      OPERATOR_NAME: ${OPERATOR_NAME:-}
+      OPERATOR_CONTACT: ${OPERATOR_CONTACT:-}
+      MULTIPLAYER: ${MULTIPLAYER:-false}
+      # Optional Google AdSense (hosted profile only; see DEPLOY.md).
+      ADSENSE_CLIENT: ${ADSENSE_CLIENT:-}
+      ADSENSE_MENU_SLOT: ${ADSENSE_MENU_SLOT:-}
+      # Optional player accounts (see DEPLOY.md "Accounts"). The SQLite file
+      # lives on the game_data volume so it survives image updates.
+      SESSION_SECRET: ${SESSION_SECRET:-}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      ACCOUNTS_DB: /usr/src/app/data/accounts.sqlite
+    expose:
+      - "8080"
+    stop_grace_period: 15s
+    volumes:
+      - game_data:/usr/src/app/data
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      game:
+        condition: service_healthy
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS:?Set SITE_ADDRESS in .env, e.g. play.example.com}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  game_data:
+  caddy_config:
