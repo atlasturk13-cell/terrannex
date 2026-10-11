@@ -263,13 +263,6 @@ export class MainMenu extends LitElement {
               </div>
             </nav>
             <menu-ad-slot></menu-ad-slot>
-            <div
-              class="mt-8 flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-widest text-white/40"
-            >
-              <span class="game-version-display"></span>
-              <span aria-hidden="true">•</span>
-              <span>${translateText("local.based_on")}</span>
-            </div>
           </div>
           ${this.renderLive()}
         </div>

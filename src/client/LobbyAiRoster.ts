@@ -1,5 +1,9 @@
 import { GameMapSize, GameMode, HumansVsNations } from "../core/game/Game";
 import { generateUniqueNationName } from "../core/game/NationCreation";
+import {
+  playerStyleNames,
+  usesPlayerStyleNames,
+} from "../core/game/PlayerStyleNames";
 import { PseudoRandom } from "../core/PseudoRandom";
 import type { GameConfig, GameID } from "../core/Schemas";
 import { simpleHash } from "../core/Util";
@@ -49,17 +53,22 @@ export function aiCommanderTotal(
 }
 
 /**
- * The roster in joining order. Names come from the map's nations, shuffled
- * by the game id; beyond the manifest they are generated like the match's.
+ * The roster in joining order. Lobbies whose match uses player-style
+ * nicknames (`usesPlayerStyleNames`) show exactly those names; otherwise the
+ * map's nations, shuffled by the game id, then generated names.
  */
 export function aiRoster(
   gameID: GameID,
   nationNames: readonly string[],
   total: number,
+  config?: GameConfig,
 ): AiRosterEntry[] {
   if (total <= 0) return [];
   const random = new PseudoRandom(simpleHash(`ai-roster:${gameID}`));
-  const names = random.shuffleArray([...nationNames]).slice(0, total);
+  const names =
+    config !== undefined && usesPlayerStyleNames(config)
+      ? random.shuffleArray(playerStyleNames(gameID, total))
+      : random.shuffleArray([...nationNames]).slice(0, total);
   // Beyond the map's nations the match generates names; so does the lobby.
   const used = new Set(names);
   while (names.length < total) {

@@ -50,20 +50,7 @@ export class AboutPage extends LitElement {
           <p class="mt-3 text-sm leading-6 text-white/75">
             ${translateText("about.body")}
           </p>
-          <dl class="mt-6 grid gap-4 text-sm sm:grid-cols-2">
-            <div
-              data-local-matte="subpanel"
-              class="rounded-xl border border-white/10 bg-white/5 px-4 py-3"
-            >
-              <dt
-                class="text-[10px] font-bold uppercase tracking-widest text-white/45"
-              >
-                ${translateText("about.version")}
-              </dt>
-              <dd
-                class="game-version-display mt-1 font-semibold text-white"
-              ></dd>
-            </div>
+          <dl class="mt-6 grid gap-4 text-sm">
             <div
               data-local-matte="subpanel"
               class="rounded-xl border border-white/10 bg-white/5 px-4 py-3"

@@ -23,11 +23,18 @@ import {
   MotionPlanRecord,
   unpackMotionPlans,
 } from "../../core/game/MotionPlans";
+import { usesPlayerStyleNames } from "../../core/game/PlayerStyleNames";
 import { TerrainMapData } from "../../core/game/TerrainMapLoader";
 import { TerraNulliusImpl } from "../../core/game/TerraNulliusImpl";
 import { UnitGrid, UnitPredicate } from "../../core/game/UnitGrid";
-import { ClientID, GameID, Player, PlayerCosmetics } from "../../core/Schemas";
-import { formatPlayerDisplayName } from "../../core/Util";
+import {
+  ClientID,
+  GameConfig,
+  GameID,
+  Player,
+  PlayerCosmetics,
+} from "../../core/Schemas";
+import { formatPlayerDisplayName, simpleHash } from "../../core/Util";
 import { WorkerClient } from "../../core/worker/WorkerClient";
 import { computeAllianceClusters } from "../render/frame/derive/AllianceClusters";
 import { extractAttackRings } from "../render/frame/derive/AttackRings";
@@ -418,7 +425,8 @@ export class GameView implements GameMap {
           // random names may coincidentally match a nation name.
           this._cosmetics.get(pu.clientID ?? "") ??
             (pu.playerType === PlayerType.Nation
-              ? this._cosmetics.get(pu.name!)
+              ? (this._cosmetics.get(pu.name!) ??
+                commanderCosmetics(this._config.gameConfig(), pu.name!))
               : undefined) ??
             {},
         );
@@ -1385,4 +1393,88 @@ export class GameView implements GameMap {
   focusedPlayer(): PlayerView | null {
     return this.myPlayer();
   }
+}
+
+/**
+ * AI commanders in public lobbies wear a country flag like players do (about
+ * three in four), picked from their nickname so every client agrees.
+ */
+function commanderCosmetics(
+  config: GameConfig,
+  name: string,
+): PlayerCosmetics | undefined {
+  if (!usesPlayerStyleNames(config)) return undefined;
+  const hash = simpleHash(`flag:${name}`);
+  if (hash % 4 === 0) return {};
+  return { flag: `/flags/${populationWeightedCountry(hash >>> 2)}.svg` };
+}
+
+/**
+ * The 50 most populous countries with their population in millions: a
+ * commander's flag is drawn with these weights, as real lobbies skew.
+ */
+const COMMANDER_FLAG_WEIGHTS: readonly [string, number][] = [
+  ["in", 1450],
+  ["cn", 1410],
+  ["us", 340],
+  ["id", 283],
+  ["pk", 251],
+  ["ng", 232],
+  ["br", 212],
+  ["bd", 174],
+  ["ru", 144],
+  ["et", 132],
+  ["mx", 131],
+  ["jp", 124],
+  ["eg", 117],
+  ["ph", 116],
+  ["cd", 110],
+  ["vn", 101],
+  ["ir", 91],
+  ["tr", 86],
+  ["de", 84],
+  ["th", 72],
+  ["tz", 69],
+  ["gb", 69],
+  ["fr", 66],
+  ["za", 64],
+  ["it", 59],
+  ["ke", 56],
+  ["mm", 54],
+  ["co", 53],
+  ["kr", 52],
+  ["sd", 51],
+  ["ug", 50],
+  ["es", 48],
+  ["dz", 47],
+  ["iq", 46],
+  ["ar", 46],
+  ["af", 43],
+  ["ye", 40],
+  ["ca", 39],
+  ["pl", 38],
+  ["ma", 38],
+  ["ao", 38],
+  ["ua", 37],
+  ["uz", 36],
+  ["my", 35],
+  ["mz", 34],
+  ["gh", 34],
+  ["pe", 34],
+  ["sa", 34],
+  ["mg", 31],
+  ["np", 30],
+];
+const COMMANDER_FLAG_TOTAL = COMMANDER_FLAG_WEIGHTS.reduce(
+  (sum, [, weight]) => sum + weight,
+  0,
+);
+
+function populationWeightedCountry(seed: number): string {
+  let ticket = seed % COMMANDER_FLAG_TOTAL;
+  for (const [code, weight] of COMMANDER_FLAG_WEIGHTS) {
+    if (ticket < weight) return code;
+    ticket -= weight;
+  }
+  return COMMANDER_FLAG_WEIGHTS[0][0];
 }

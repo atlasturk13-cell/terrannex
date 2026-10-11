@@ -9,6 +9,7 @@ import {
 import { EventBus } from "../../../core/EventBus";
 import { GameType, RankedType } from "../../../core/game/Game";
 import { GameUpdateType } from "../../../core/game/GameUpdates";
+import { usesPlayerStyleNames } from "../../../core/game/PlayerStyleNames";
 import { getUserMe } from "../../Api";
 import { ClientEnv } from "../../ClientEnv";
 import "../../components/CosmeticCard";
@@ -386,9 +387,12 @@ export class WinModal extends LitElement implements Controller {
         this.show();
       } else if (wu.winner[0] === "nation") {
         this.eventBus.emit(new SendWinnerEvent(wu.winner, wu.allPlayersStats));
-        this._title = translateText("win_modal.nation_won", {
-          nation: wu.winner[1],
-        });
+        // Public lobbies present AI commanders like players.
+        this._title = usesPlayerStyleNames(this.game.config().gameConfig())
+          ? translateText("win_modal.other_won", { player: wu.winner[1] })
+          : translateText("win_modal.nation_won", {
+              nation: wu.winner[1],
+            });
         this.isWin = false;
         this.show();
       } else {

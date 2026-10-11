@@ -86,11 +86,7 @@ export class MobileNavBar extends LitElement {
         </button>`;
       return html`
         <div data-ui-audit-root="setup" class="flex h-full flex-col gap-2 p-5">
-          <local-brand></local-brand>
-          <div
-            id="game-version"
-            class="mb-4 mt-1 text-[10px] uppercase tracking-widest text-white/35"
-          ></div>
+          <div class="mb-4"><local-brand></local-brand></div>
           ${item("page-main-menu", "home", "main_menu.home")}
           ${item("page-single-player", "play", "main_menu.play")}
           ${multiplayer

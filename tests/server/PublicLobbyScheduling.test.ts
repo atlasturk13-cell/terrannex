@@ -76,8 +76,9 @@ describe("public lobbies without the closed API", () => {
   it("puts AI nations into every public lobby type", async () => {
     vi.stubEnv("LOCAL_ONLY", "true");
     expect(lobbyNationCount(2)).toBe(2);
-    expect(lobbyNationCount(40)).toBe(10);
-    expect(lobbyNationCount(400)).toBe(20);
+    expect(lobbyNationCount(25)).toBe(19);
+    expect(lobbyNationCount(40)).toBe(30);
+    expect(lobbyNationCount(400)).toBe(60);
     const playlist = new MapPlaylist();
     for (let i = 0; i < 12; i++) {
       const team = await playlist.gameConfig("team");
@@ -88,8 +89,8 @@ describe("public lobbies without the closed API", () => {
         expect(team.nations).toBe(lobbyNationCount(team.maxPlayers!));
       }
       const ffa = await playlist.gameConfig("ffa");
-      // The map's own nations (every admitted map defines some).
-      expect(ffa.nations).toBe("default");
+      // Three quarters of the slots are AI commanders.
+      expect(ffa.nations).toBe(lobbyNationCount(ffa.maxPlayers!));
       const special = await playlist.gameConfig("special");
       // Only the 25M-gold preset keeps nations out (no PVP immunity).
       if ((special.startingGold ?? 0) < 25_000_000) {

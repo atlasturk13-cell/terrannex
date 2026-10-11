@@ -27,6 +27,7 @@ import {
   AttackUpdate,
   PlayerUpdate,
 } from "../../core/game/GameUpdates";
+import { usesPlayerStyleNames } from "../../core/game/PlayerStyleNames";
 import { UserSettings } from "../../core/game/UserSettings";
 import { PlayerState, PlayerStatic, PlayerTypeEnum } from "../render/types";
 import { themeProvider } from "../theme/ThemeProvider";
@@ -477,6 +478,21 @@ export class PlayerView {
       default:
         return PlayerType.Bot;
     }
+  }
+  /**
+   * The type the UI shows. In public lobbies AI commanders play under
+   * player-style nicknames and are presented like players; game logic keeps
+   * using `type()`.
+   */
+  presentedType(): PlayerType {
+    const type = this.type();
+    if (
+      type === PlayerType.Nation &&
+      usesPlayerStyleNames(this.game.config().gameConfig())
+    ) {
+      return PlayerType.Human;
+    }
+    return type;
   }
   isAlive(): boolean {
     return this.state.isAlive;

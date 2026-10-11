@@ -83,15 +83,17 @@ export class LobbyTeamView extends LitElement {
           <div
             class="text-xs font-bold text-white/40 uppercase tracking-widest"
           >
-            ${this.clients.length}
-            ${this.clients.length === 1
-              ? translateText("host_modal.player")
-              : translateText("host_modal.players")}
-            <span style="margin: 0 8px;">•</span>
-            ${this.aiCommanders?.length ?? this.effectiveNationCount}
-            ${(this.aiCommanders?.length ?? this.effectiveNationCount) === 1
-              ? translateText("host_modal.nation_player")
-              : translateText("host_modal.nation_players")}
+            ${this.aiCommanders !== null
+              ? this.renderPublicCount()
+              : html`${this.clients.length}
+                  ${this.clients.length === 1
+                    ? translateText("host_modal.player")
+                    : translateText("host_modal.players")}
+                  <span style="margin: 0 8px;">•</span>
+                  ${this.effectiveNationCount}
+                  ${this.effectiveNationCount === 1
+                    ? translateText("host_modal.nation_player")
+                    : translateText("host_modal.nation_players")}`}
           </div>
         </div>
         <div
@@ -101,9 +103,17 @@ export class LobbyTeamView extends LitElement {
             ? this.renderTeamMode()
             : this.renderFreeForAll()}
         </div>
-        ${this.renderAiCommanders()}
       </div>
     `;
+  }
+
+  /** Public lobbies list AI commanders with the players, as one count. */
+  private renderPublicCount() {
+    const total = this.clients.length + (this.aiCommanders?.length ?? 0);
+    return html`${total}
+    ${total === 1
+      ? translateText("host_modal.player")
+      : translateText("host_modal.players")}`;
   }
 
   createRenderRoot() {
@@ -141,6 +151,16 @@ export class LobbyTeamView extends LitElement {
             </div>`;
           },
         )}
+        ${repeat(
+          this.aiCommanders ?? [],
+          (name) => `ai:${name}`,
+          (name) =>
+            html`<div
+              class="px-2 py-1 rounded-sm mb-1 text-xs text-white border bg-gray-700/70 border-transparent"
+            >
+              ${name}
+            </div>`,
+        )}
       </div>
       <div class="flex-1 flex flex-col gap-3 md:gap-4 md:pr-1">
         <div>
@@ -169,30 +189,6 @@ export class LobbyTeamView extends LitElement {
             )}
           </div>
         </div>
-      </div>
-    </div>`;
-  }
-
-  private renderAiCommanders() {
-    if (this.aiCommanders === null || this.aiCommanders.length === 0) {
-      return html``;
-    }
-    return html`<div class="mt-3" data-ai-commanders>
-      <div
-        class="mb-2 text-[10px] font-bold uppercase tracking-widest text-white/40"
-      >
-        ${translateText("multiplayer.ai_commanders")}
-      </div>
-      <div class="flex flex-wrap gap-1.5">
-        ${repeat(
-          this.aiCommanders,
-          (name) => name,
-          (name) =>
-            html`<span
-              class="inline-flex items-center rounded-md border border-white/10 bg-white/5 px-2 py-1 text-xs text-white/80"
-              >${name}</span
-            >`,
-        )}
       </div>
     </div>`;
   }
@@ -244,6 +240,13 @@ export class LobbyTeamView extends LitElement {
               : html``}
         </span>`;
       },
+    )}${repeat(
+      this.aiCommanders ?? [],
+      (name) => `ai:${name}`,
+      (name) =>
+        html`<span class="player-tag"
+          ><span class="text-white">${name}</span></span
+        >`,
     )} `;
   }
 

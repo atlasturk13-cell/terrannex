@@ -139,7 +139,11 @@ export class JoinLobbyModal extends BaseModal {
             })
           : translateText("public_lobby.started");
     const maxPlayers = this.gameConfig?.maxPlayers ?? 0;
-    const playerCount = this.players?.length ?? 0;
+    // Public lobbies count their AI commanders as players.
+    const lobbyCount =
+      (this.players?.length ?? 0) + (this.publicAiCommanders()?.length ?? 0);
+    const playerCount =
+      maxPlayers > 0 ? Math.min(maxPlayers, lobbyCount) : lobbyCount;
     const hostClientID = this.isPrivateLobby()
       ? (this.lobbyCreatorClientID ?? "")
       : "";
@@ -712,7 +716,7 @@ export class JoinLobbyModal extends BaseModal {
           value: String(c.bots),
         });
     }
-    if (nationCount !== null) {
+    if (nationCount !== null && c.gameType !== GameType.Public) {
       const defaultNations = isCompact
         ? Math.max(0, Math.floor(nationCount * 0.25))
         : nationCount;
@@ -993,7 +997,7 @@ export class JoinLobbyModal extends BaseModal {
         ? null
         : this.lobbyStartAt - getServerNow(this.serverTimeOffset);
     return aiCommandersPresent(
-      aiRoster(this.currentLobbyId, this.nationNames, total),
+      aiRoster(this.currentLobbyId, this.nationNames, total, this.gameConfig),
       msUntilStart,
     ).map((entry) => entry.name);
   }

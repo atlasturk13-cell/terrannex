@@ -190,7 +190,11 @@ export class PlayerInfoOverlay extends LitElement implements Controller {
     player: PlayerView,
     myPlayer: PlayerView | null | undefined,
   ): TemplateResult | string {
-    if (!myPlayer || myPlayer === player || player.type() !== PlayerType.Nation)
+    if (
+      !myPlayer ||
+      myPlayer === player ||
+      player.presentedType() !== PlayerType.Nation
+    )
       return "";
     const relation =
       this.playerProfile?.relations[myPlayer.smallID()] ?? Relation.Neutral;
@@ -378,7 +382,7 @@ export class PlayerInfoOverlay extends LitElement implements Controller {
     const totalTroops = player.troops();
 
     let playerType = "";
-    switch (player.type()) {
+    switch (player.presentedType()) {
       case PlayerType.Bot:
         playerType = translateText("player_type.bot");
         break;

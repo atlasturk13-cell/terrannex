@@ -208,12 +208,28 @@ describe("site metadata", () => {
       "icon-maskable-512.png",
       "apple-touch-icon.png",
       "social-card.png",
+      "favicon-48.png",
+      "favicon-96.png",
     ]) {
       const stat = await fs.stat(
         path.join(process.cwd(), "resources/local", file),
       );
       expect(stat.size).toBeGreaterThan(1000);
     }
+  });
+
+  test("favicon.ico is a real icon with 16, 32 and 48px images", async () => {
+    const ico = await fs.readFile(
+      path.join(process.cwd(), "resources/favicon.ico"),
+    );
+    // ICONDIR: reserved 0, type 1 (icon), then the image count.
+    expect(ico.readUInt16LE(0)).toBe(0);
+    expect(ico.readUInt16LE(2)).toBe(1);
+    const count = ico.readUInt16LE(4);
+    const widths = Array.from({ length: count }, (_, i) =>
+      ico.readUInt8(6 + 16 * i),
+    );
+    expect(widths).toEqual([16, 32, 48]);
   });
 });
 

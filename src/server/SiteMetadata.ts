@@ -8,7 +8,7 @@ import { AssetManifest, buildAssetUrl } from "../core/AssetUrls";
 export const SITE_NAME = "Terrannex";
 export const SITE_TAGLINE = "Real-time territorial strategy";
 export const SITE_DESCRIPTION =
-  "Terrannex is a free real-time territorial strategy game based on OpenFront: claim land, build ports, airports and defenses, send fleets and jets, and hold the map against nations and tribes.";
+  "Terrannex is a free real-time strategy game in your browser: claim land, build ports, airports and defenses, send fleets and jets, and conquer the world map against players and nations.";
 export const SITE_THEME_COLOR = "#0a1628";
 export const SITE_BACKGROUND_COLOR = "#101828";
 
@@ -21,6 +21,9 @@ export const ICON_192 = "local/icon-192.png";
 export const ICON_512 = "local/icon-512.png";
 export const ICON_MASKABLE_512 = "local/icon-maskable-512.png";
 export const APPLE_TOUCH_ICON = "local/apple-touch-icon.png";
+/** PNG favicons in multiples of 48px, the sizes Google Search prefers. */
+export const FAVICON_48 = "local/favicon-48.png";
+export const FAVICON_96 = "local/favicon-96.png";
 export const SOCIAL_CARD = "local/social-card.png";
 export const BRAND_MARK = "local/territory-lab-mark.svg";
 

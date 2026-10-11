@@ -61,6 +61,7 @@ const ROOT_PUBLIC_FILES = new Set([
 export const LOCAL_ROOT_PUBLIC_FILES = new Set([
   "LICENSE",
   "Oxanium-OFL.txt",
+  "favicon.ico",
   "robots.txt",
   "version.txt",
 ]);

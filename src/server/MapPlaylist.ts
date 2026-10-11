@@ -22,7 +22,7 @@ import {
 } from "../core/Schemas";
 import { isAdmittedServerMap } from "./AdmittedMaps";
 import { logger } from "./Logger";
-import { getMapLandTiles, getMapNationCount } from "./MapLandTiles";
+import { getMapLandTiles } from "./MapLandTiles";
 import { ServerEnv } from "./ServerEnv";
 
 const log = logger.child({});
@@ -133,13 +133,15 @@ const MUTUALLY_EXCLUSIVE_MODIFIERS: [ModifierKey, ModifierKey][] = [
   ["isNukesDisabled", "isWaterNukes"],
 ];
 
+/** Most AI commanders a public lobby brings (client simulation cost). */
+export const MAX_LOBBY_NATIONS = 60;
+
 /**
- * Generated AI nations for a public lobby whose rules or map bring none:
- * about one per four human slots, so every lobby has AI commanders without
- * crowding out players.
+ * AI commanders in a public lobby: three quarters of the player slots
+ * (2–60), so every lobby looks busy while leaving room for real players.
  */
 export function lobbyNationCount(maxPlayers: number): number {
-  return Math.min(20, Math.max(2, Math.floor(maxPlayers / 4)));
+  return Math.min(MAX_LOBBY_NATIONS, Math.max(2, Math.ceil(maxPlayers * 0.75)));
 }
 
 export class MapPlaylist {
@@ -575,14 +577,13 @@ export class MapPlaylist {
   }
 
   /**
-   * FFA lobbies play the map's own nations; a map that defines none (The
-   * Box, Alps…) gets generated ones so every lobby has AI commanders.
+   * FFA lobbies fill three quarters of their slots with AI commanders
+   * (spawning at the map's nation sites first, then anywhere).
    */
   private async defaultNations(
-    map: GameMapType,
+    _map: GameMapType,
     maxPlayers: number,
   ): Promise<GameConfig["nations"]> {
-    if ((await getMapNationCount(map)) > 0) return "default";
     return lobbyNationCount(maxPlayers);
   }
 

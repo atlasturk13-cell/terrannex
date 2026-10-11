@@ -63,6 +63,8 @@ const files = {
   "resources/local/icon-maskable-512.png": png(512, 512, slate),
   "resources/local/apple-touch-icon.png": png(180, 180, slate),
   "resources/local/social-card.png": png(1200, 630, slate),
+  "resources/local/favicon-48.png": png(48, 48, slate),
+  "resources/local/favicon-96.png": png(96, 96, slate),
   "resources/images/LocalSetupSatelliteBackground.png": png(
     1672,
     941,
@@ -96,6 +98,29 @@ for (const name of [
 ]) {
   files[`resources/images/aircraft/${name}.svg`] = svg(name);
 }
+
+/** ICO file with one embedded PNG per size. */
+function ico(sizes) {
+  const images = sizes.map((size) => png(size, size, slate));
+  const header = Buffer.alloc(6);
+  header.writeUInt16LE(0, 0);
+  header.writeUInt16LE(1, 2);
+  header.writeUInt16LE(sizes.length, 4);
+  let offset = 6 + 16 * sizes.length;
+  const entries = sizes.map((size, i) => {
+    const entry = Buffer.alloc(16);
+    entry.writeUInt8(size, 0);
+    entry.writeUInt8(size, 1);
+    entry.writeUInt16LE(1, 4);
+    entry.writeUInt16LE(32, 6);
+    entry.writeUInt32LE(images[i].length, 8);
+    entry.writeUInt32LE(offset, 12);
+    offset += images[i].length;
+    return entry;
+  });
+  return Buffer.concat([header, ...entries, ...images]);
+}
+files["resources/favicon.ico"] = ico([16, 32, 48]);
 
 let written = 0;
 for (const [rel, content] of Object.entries(files)) {

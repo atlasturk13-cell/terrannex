@@ -1,12 +1,11 @@
 {
   "about": {
     "back": "Back to main menu",
-    "body": "Terrannex is a real-time territorial strategy game based on OpenFront. Claim land, raise an economy, send fleets and jets, and hold the map against nations and tribes.",
+    "body": "Terrannex is a real-time territorial strategy game. Claim land, raise an economy, send fleets and jets, and hold the map against nations and tribes.",
     "credits": "Asset credits and third-party notices are listed with the source code.",
     "licence": "Licensed under the GNU AGPL-3.0. The complete corresponding source of this build is available at the link above.",
     "source": "Source code",
-    "title": "About",
-    "version": "Version"
+    "title": "About"
   },
   "account": {
     "cancel": "Cancel",
@@ -1419,7 +1418,6 @@
   "local": {
     "advanced_options": "Advanced options",
     "advanced_options_help": "Speed, tempo, victory, funds, tribes, units.",
-    "based_on": "Based on OpenFront",
     "brand": "Terrannex",
     "camera_follow": "Center on my territory",
     "camera_follow_help": "Centers the map on you.",
@@ -1436,7 +1434,8 @@
     "commander": "Commander identity",
     "commander_help": "Your name in this match.",
     "configure_skirmish": "Configure skirmish",
-    "copyright": "© OpenFront and Contributors — AGPL-3.0 source base",
+    "copyright": "© OpenFront and Contributors",
+    "copyright_owner": "© 2026 Terrannex",
     "decrease_starting_funds": "Decrease starting funds",
     "depth_progression": "Depth progression",
     "depth_progression_help": "Adds building levels and ammo.",
@@ -1454,7 +1453,7 @@
     "ready_body": "Two clicks from setup to the live map. No account, ads, matchmaking, or remote API.",
     "ready_title": "Local skirmish ready",
     "settings": "Settings",
-    "source_link": "OpenFront source and notices",
+    "source_link": "Source code",
     "start_battle": "Start match",
     "starting_funds": "Starting funds",
     "tempo_fast": "Fast",
@@ -1731,7 +1730,6 @@
     "warning": "Vigilant Mode Warning"
   },
   "multiplayer": {
-    "ai_commanders": "Nations",
     "ai_joined": "{name} joined",
     "back": "Main menu",
     "connecting": "Connecting to the lobby list…",
@@ -1746,9 +1744,9 @@
     "live": "Live",
     "name_label": "Your name",
     "players": "{count} / {max} players",
-    "players_and_ai": "{players}/{max} players · {ai} nations",
+    "players_and_ai": "{players}/{max} players",
     "private_title": "Play with friends",
-    "public_desc": "A new public match opens every 30 seconds. Nations join while the countdown runs, so every lobby has opponents.",
+    "public_desc": "A new public match opens every 30 seconds. Join one and the battle starts when the countdown ends.",
     "public_title": "Public lobbies",
     "queued": "Next",
     "special": "Special",

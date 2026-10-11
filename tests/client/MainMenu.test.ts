@@ -67,7 +67,7 @@ describe("Main menu", () => {
       "hero",
     );
     expect(menu.textContent).toContain("main_menu.tagline");
-    expect(menu.querySelector(".game-version-display")).not.toBeNull();
+    expect(menu.textContent).not.toContain("local.based_on");
 
     items[0].click();
     expect(showPage).toHaveBeenCalledExactlyOnceWith("page-single-player");
@@ -139,7 +139,7 @@ describe("Main menu", () => {
     ).not.toBeNull();
     expect(about.textContent).toContain("about.licence");
     expect(about.textContent).toContain("local.copyright");
-    expect(about.querySelector(".game-version-display")).not.toBeNull();
+    expect(about.querySelector(".game-version-display")).toBeNull();
     expect(
       about.querySelector('.nav-menu-item[data-page="page-main-menu"]'),
     ).not.toBeNull();

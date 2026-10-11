@@ -10,6 +10,7 @@ import {
   PlayerInfo,
   PlayerType,
 } from "./Game";
+import { playerStyleNames, usesPlayerStyleNames } from "./PlayerStyleNames";
 import { AdditionalNation, Nation as ManifestNation } from "./TerrainMapLoader";
 
 /**
@@ -26,6 +27,33 @@ import { AdditionalNation, Nation as ManifestNation } from "./TerrainMapLoader";
  * drawn from `additionalNations`; any remainder is generated procedurally.
  */
 export function createNationsForGame(
+  gameStart: GameStartInfo,
+  manifestNations: ManifestNation[],
+  additionalNations: AdditionalNation[],
+  numHumans: number,
+  random: PseudoRandom,
+): Nation[] {
+  const nations = createMapNations(
+    gameStart,
+    manifestNations,
+    additionalNations,
+    numHumans,
+    random,
+  );
+  if (!usesPlayerStyleNames(gameStart.config)) return nations;
+  // Public lobbies: same spawns and ids, player-style nicknames from a
+  // separate stream keyed by the game id (the lobby card shows the same).
+  const names = playerStyleNames(gameStart.gameID, nations.length);
+  return nations.map(
+    (nation, i) =>
+      new Nation(
+        nation.spawnCell,
+        new PlayerInfo(names[i], PlayerType.Nation, null, nation.playerInfo.id),
+      ),
+  );
+}
+
+function createMapNations(
   gameStart: GameStartInfo,
   manifestNations: ManifestNation[],
   additionalNations: AdditionalNation[],

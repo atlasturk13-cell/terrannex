@@ -31,13 +31,6 @@ export class LocalBrand extends LitElement {
           >
             ${translateText("local.brand")}
           </div>
-          <div
-            class="${hero
-              ? "text-xs sm:text-sm mt-2"
-              : "text-[10px] mt-1"} font-semibold uppercase tracking-[0.18em] text-cyan-300/80"
-          >
-            ${translateText("local.based_on")}
-          </div>
         </div>
       </div>
     `;

@@ -308,6 +308,18 @@ describe("app shell", () => {
     );
   });
 
+  test("links favicon.ico and the 48px/96px PNG favicons", async () => {
+    stubEnv(hostedEnv);
+    const html = await renderHtmlContent(indexHtml);
+    expect(html).toContain('<link rel="icon" href="/favicon.ico"');
+    expect(html).toMatch(
+      /rel="icon"\s+type="image\/png"\s+sizes="48x48"\s+href="[^"]*favicon-48[^"]*\.png"/,
+    );
+    expect(html).toMatch(
+      /rel="icon"\s+type="image\/png"\s+sizes="96x96"\s+href="[^"]*favicon-96[^"]*\.png"/,
+    );
+  });
+
   test("a private local run never renders the tag", async () => {
     stubEnv({ ...hostedEnv, PUBLIC_ORIGIN: "", ADSENSE_CLIENT: CLIENT });
     const html = await renderHtmlContent(indexHtml);

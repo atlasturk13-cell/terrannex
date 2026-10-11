@@ -24,6 +24,7 @@ import {
   DEFAULT_NUKE_EXPLOSION_COLOR,
   MAX_NUKE_EXPLOSION_COLORS,
   type NukeExplosionRenderParams,
+  PlayerTypeEnum,
 } from "./render/types";
 // Value import from the leaf module (not the ./render/gl barrel) so non-Vite
 // consumers don't pull in GPURenderer and its shaders — see note above.
@@ -474,6 +475,10 @@ export class WebGLFrameBuilder {
 
       newPlayers.push({
         ...p.static,
+        // AI commanders in public lobbies are drawn like players.
+        ...(p.presentedType() !== p.type()
+          ? { playerType: PlayerTypeEnum.Human }
+          : {}),
         // displayName() honors the anonymous-names setting; static.displayName
         // is always the real name.
         displayName: p.displayName(),

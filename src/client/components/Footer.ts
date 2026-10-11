@@ -18,7 +18,9 @@ export class Footer extends LitElement {
         <footer
           class="[.in-game_&]:hidden flex w-full shrink-0 flex-col items-center justify-center gap-1 border-t border-white/10 bg-zinc-950/90 px-4 py-3 text-center text-[11px] text-white/40 sm:flex-row sm:gap-3"
         >
-          <span>${translateText("local.copyright")}</span>
+          <!-- "© OpenFront and Contributors" (OpenFront licence, AGPL §7(b))
+               is shown on the match loading screen and the About page. -->
+          <span>${translateText("local.copyright_owner")}</span>
           <span class="hidden sm:inline" aria-hidden="true">•</span>
           <a
             href=${ClientEnv.sourceUrl()}

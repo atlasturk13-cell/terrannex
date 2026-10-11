@@ -305,9 +305,8 @@ class Client {
     const versionElements = document.querySelectorAll(
       "#game-version, .game-version-display",
     );
-    if (versionElements.length === 0) {
-      console.warn("Game version element not found");
-    } else {
+    // The local build shows no version label; the inherited UI still does.
+    if (versionElements.length > 0) {
       const trimmed = version.trim();
       const displayVersion = trimmed.startsWith("v") ? trimmed : `v${trimmed}`;
       const label = composeVersionDisplay(

@@ -168,7 +168,7 @@ export class LiveLobbyCard extends LitElement {
       this.nationNames.length,
       lobby.numClients,
     );
-    const roster = aiRoster(lobby.gameID, this.nationNames, total);
+    const roster = aiRoster(lobby.gameID, this.nationNames, total, config);
     const present = aiCommandersPresent(roster, ms);
     const humans = lobby.numClients;
     const inLobby = humans + present.length;
@@ -276,9 +276,11 @@ export class LiveLobbyCard extends LitElement {
             </div>
             <div class="mt-1 truncate text-[11px] text-white/60">
               ${translateText("multiplayer.players_and_ai", {
-                players: humans,
+                players:
+                  config.maxPlayers === undefined
+                    ? inLobby
+                    : Math.min(config.maxPlayers, inLobby),
                 max: config.maxPlayers ?? "?",
-                ai: present.length,
               })}
             </div>
             ${latest !== null && hero

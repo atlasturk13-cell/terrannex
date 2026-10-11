@@ -23,6 +23,8 @@ import {
 } from "./src/server/PublicAssetManifest.js";
 import {
   APPLE_TOUCH_ICON,
+  FAVICON_48,
+  FAVICON_96,
   SITE_DESCRIPTION,
   SITE_NAME,
   SOCIAL_CARD,
@@ -202,6 +204,8 @@ export default defineConfig(({ mode }) => {
     canonicalHref: "/",
     ogImageUrl: buildAssetUrl(SOCIAL_CARD, assetManifest, cdnBase),
     appleTouchIconHref: buildAssetUrl(APPLE_TOUCH_ICON, assetManifest, cdnBase),
+    favicon48Href: buildAssetUrl(FAVICON_48, assetManifest, cdnBase),
+    favicon96Href: buildAssetUrl(FAVICON_96, assetManifest, cdnBase),
     multiplayer: env.MULTIPLAYER === "true",
     sourceUrl: JSON.stringify(
       env.SOURCE_URL && env.SOURCE_URL.trim() !== ""

@@ -94,10 +94,6 @@ export class DesktopNavBar extends LitElement {
             >
               <local-brand></local-brand>
             </button>
-            <div
-              id="game-version"
-              class="hidden text-[10px] uppercase tracking-widest text-white/35 xl:block"
-            ></div>
           </div>
           <nav
             class="hidden items-center gap-6 lg:flex"

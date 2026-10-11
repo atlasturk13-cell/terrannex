@@ -491,7 +491,7 @@ export class PlayerPanel extends LitElement implements Controller {
   }
 
   private renderRelationPillIfNation(other: PlayerView, my: PlayerView) {
-    if (other.type() !== PlayerType.Nation) return html``;
+    if (other.presentedType() !== PlayerType.Nation) return html``;
     if (other.isTraitor()) return html``;
     if (my?.isAlliedWith && my.isAlliedWith(other)) return html``;
     if (!this.otherProfile || !my) return html``;
@@ -518,7 +518,7 @@ export class PlayerPanel extends LitElement implements Controller {
     const chip =
       other.type() === PlayerType.Human
         ? null
-        : this.identityChipProps(other.type());
+        : this.identityChipProps(other.presentedType());
 
     return html`
       <div class="flex items-center gap-2.5 flex-wrap">

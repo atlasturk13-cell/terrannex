@@ -158,10 +158,12 @@ describe("PublicAssetManifest", () => {
       fs.writeFile(path.join(resourcesDir, "privacy-policy.html"), "privacy"),
       fs.writeFile(path.join(resourcesDir, "ads.txt"), "ads"),
       fs.writeFile(path.join(resourcesDir, "version.txt"), "0.1.0"),
+      fs.writeFile(path.join(resourcesDir, "favicon.ico"), "ico"),
     ]);
 
     expect(listRootPublicFiles(resourcesDir, LOCAL_ROOT_PUBLIC_FILES)).toEqual([
       "LICENSE",
+      "favicon.ico",
       "version.txt",
     ]);
   });

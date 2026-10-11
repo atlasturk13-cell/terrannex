@@ -24,25 +24,25 @@ export class GameStartingModal extends LitElement {
           ? "opacity-100 visible -translate-y-1/2"
           : "opacity-0 invisible -translate-y-[48%]"}"
       >
-        <div
-          class="text-base font-medium tracking-wider uppercase text-white/40 mb-3"
-        >
-          ${translateText("main.copyright")}
-        </div>
-        <a
-          href="https://github.com/openfrontio/OpenFrontIO/blob/main/CREDITS.md"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="block mb-4 text-lg font-medium tracking-wider uppercase text-malibu-blue no-underline transition-colors duration-200 hover:text-aquarius"
-          >${translateText("game_starting_modal.credits")}</a
-        >
-        <p class="text-base text-white/40 mb-4">
-          ${translateText("game_starting_modal.code_license")}
-        </p>
         <p
           class="text-xl font-medium tracking-wider text-white bg-white/5 border border-white/10 px-4 py-3 rounded-xl"
         >
           ${translateText("game_starting_modal.title")}
+        </p>
+        <!-- Required by OpenFront's licence (AGPL §7(b)): kept small. -->
+        <p
+          class="mt-3 text-[10px] leading-4 text-white/25"
+          data-upstream-notice
+        >
+          ${translateText("main.copyright")} ·
+          <a
+            href="https://github.com/openfrontio/OpenFrontIO/blob/main/CREDITS.md"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-white/25 no-underline hover:text-white/50"
+            >${translateText("game_starting_modal.credits")}</a
+          >
+          · ${translateText("game_starting_modal.code_license")}
         </p>
       </div>
     `;
